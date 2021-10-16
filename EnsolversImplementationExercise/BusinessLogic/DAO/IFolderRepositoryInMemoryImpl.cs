@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.DAO
 {
-    class IFolderRepositoryInMemoryImpl:IFolderRepository
+    public class IFolderRepositoryInMemoryImpl:IFolderRepository
     {
         public List<Folder> Folders { get; set; }
 
