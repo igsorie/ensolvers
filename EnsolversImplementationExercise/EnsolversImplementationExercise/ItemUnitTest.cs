@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EnsolversImplementationExercise
 {
     [TestClass]
-    public class ItemsUnitTest
+    public class ItemUnitTest
     {
         [TestMethod]
         public void IsValidItemNameTest()
