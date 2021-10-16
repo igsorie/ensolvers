@@ -55,6 +55,21 @@ namespace EnsolversImplementationExercise
             Assert.IsFalse(isValid);
         }
 
+        [TestMethod]
+        public void IsValidStatusTest()
+        {
+            Item item = new Item();
+            item.Status = true;
+        }
 
+        [TestMethod]
+        public void EqualsItemTest()
+        {
+            Item originalItem = new Item();
+            originalItem.Name = "Write to candidates";
+            Item itemToCompare = new Item();
+            itemToCompare.Name = "Isnt equals than originalItem";
+            Assert.IsFalse(originalItem.Equals(itemToCompare));
+        }
     }
 }
