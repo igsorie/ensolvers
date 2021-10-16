@@ -13,5 +13,15 @@ namespace EnsolversImplementationExercise
             bool isValid = item.IsValidItemName();
             Assert.IsFalse(isValid);
         }
+
+        [TestMethod]
+        public void IsInvalidItemNameTest()
+        {
+            Item item = new Item();
+            item.Name = "";
+
+            bool isValid = item.IsValidItemName();
+            Assert.IsFalse(isValid);
+        }
     }
 }

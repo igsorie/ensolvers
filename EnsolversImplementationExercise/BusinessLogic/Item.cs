@@ -8,9 +8,11 @@ namespace BusinessLogic
 {
     public class Item
     {
+        public string Name { get; set; }
+
         public bool IsValidItemName()
         {
-            return false;
+            return this.Name != null;
         }
     }
 }
