@@ -8,9 +8,22 @@ namespace BusinessLogic
 {
     public class Folder
     {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        private const int NAME_MAX_LENGTH = 25;
+
+        public List<Item> Items { get; set; }
+
+        public Folder()
+        {
+            Items = new List<Item>();
+        }
+
         public bool IsValidItemName()
         {
-            return true;
+            return this.Name != null && this.Name.Length <= NAME_MAX_LENGTH;
         }
     }
 }
