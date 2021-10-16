@@ -36,7 +36,7 @@ namespace EnsolversImplementationExercise
         }
 
         [TestMethod]
-        public void IsInvalidLongNameTest()
+        public void IsValidMaxLongNameTest()
         {
             Item item = new Item();
             item.Name = "is to long name test for this name36";
@@ -44,5 +44,17 @@ namespace EnsolversImplementationExercise
             bool isValid = item.IsValidItemName();
             Assert.IsTrue(isValid);
         }
+
+        [TestMethod]
+        public void IsInvalidLongNameTest()
+        {
+            Item item = new Item();
+            item.Name = "is to long name test for this name, its have 58 characters";
+
+            bool isValid = item.IsValidItemName();
+            Assert.IsFalse(isValid);
+        }
+
+
     }
 }
