@@ -31,6 +31,21 @@ namespace BusinessLogic.Services
             itemRepository.UpdateItem(item);
         }
 
+        public Item GetItem(int id)
+        {
+            Item itemFind = itemRepository.GetItem(id);
+            if (itemFind == null)
+            {
+                throw new InvalidOperationException("Error to get item. It doesn't exist in the system.");
+            }
+            return itemFind;
+        }
+
+        public List<Item> GetItems()
+        {
+            return itemRepository.GetItems();
+        }
+
         public void IsValidItemName(Item item)
         {
             if (!item.IsValidItemName())

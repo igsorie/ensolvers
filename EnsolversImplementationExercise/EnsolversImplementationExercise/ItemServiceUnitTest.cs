@@ -51,7 +51,7 @@ namespace EnsolversImplementationExercise
         }
 
         [TestMethod]
-        public void AddUserTestOk()
+        public void AddItemTestOk()
         {
             Item item = new Item();
             item.Name = "correct name";
@@ -73,7 +73,7 @@ namespace EnsolversImplementationExercise
         }
 
         [TestMethod]
-        public void UpdateUserTestOk()
+        public void UpdateItemTestOk()
         {
             Item item = new Item();
             item.Name = "Write to candidates";
@@ -81,8 +81,27 @@ namespace EnsolversImplementationExercise
             itemService.AddItem(item);
             item.Name = "New item";
             itemService.Update(item);
-
         }
 
+        [TestMethod]
+        public void GetItemTestOk()
+        {
+            Item item = new Item();
+            item.Name = "Write to candidates";
+            item.Id = 1;
+            itemService.AddItem(item);;
+            itemService.GetItem(item.Id);
+        }
+
+        [TestMethod]
+        public void GetItemsTestOk()
+        {
+            Item item = new Item();
+            item.Name = "Write to candidates";
+            item.Id = 1;
+            itemService.AddItem(item);
+            List<Item> items = itemService.GetItems();
+            Assert.AreEqual(items[0], item);
+        }
     }
 }
