@@ -40,5 +40,10 @@ namespace BusinessLogic.Services
             }
         }
 
+        public List<Folder> GetFolders()
+        {
+            return folderRepository.GetFolders();
+        }
+
     }
 }

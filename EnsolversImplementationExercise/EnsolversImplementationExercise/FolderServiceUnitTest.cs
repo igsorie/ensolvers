@@ -66,5 +66,16 @@ namespace EnsolversImplementationExercise
             folder.Name = "New folder";
             folderService.Update(folder);
         }
+
+        [TestMethod]
+        public void GetFoldersTestOk()
+        {
+            Folder folder = new Folder();
+            folder.Name = "Work";
+            folder.Id = 1;
+            folderService.AddFolder(folder);
+            List<Folder> folders = folderService.GetFolders();
+            Assert.AreEqual(folders[0], folder);
+        }
     }
 }
