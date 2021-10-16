@@ -15,13 +15,23 @@ namespace EnsolversImplementationExercise
         }
 
         [TestMethod]
-        public void IsInvalidItemNameTest()
+        public void IsInvalidItemNameEmptyTest()
         {
             Item item = new Item();
             item.Name = "";
 
             bool isValid = item.IsValidItemName();
             Assert.IsFalse(isValid);
+        }
+
+        [TestMethod]
+        public void IsValidLongNameTest()
+        {
+            Item item = new Item();
+            item.Name = "Prepare weekly report";
+
+            bool isValid = item.IsValidItemName();
+            Assert.IsTrue(isValid);
         }
     }
 }

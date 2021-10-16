@@ -10,6 +10,7 @@ namespace BusinessLogic
     {
         public string Name { get; set; }
 
+
         public bool IsValidItemName()
         {
             return this.Name != null;
