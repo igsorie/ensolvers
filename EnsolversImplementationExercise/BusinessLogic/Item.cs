@@ -10,10 +10,11 @@ namespace BusinessLogic
     {
         public string Name { get; set; }
 
+        private const int NAME_MAX_LENGTH = 36;
 
         public bool IsValidItemName()
         {
-            return this.Name != null;
+            return this.Name != null && this.Name.Length <= NAME_MAX_LENGTH;
         }
     }
 }
