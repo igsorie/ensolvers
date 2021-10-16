@@ -40,5 +40,49 @@ namespace EnsolversImplementationExercise
 
             itemService.IsValidItemName(item);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void AddItemInvalidItemTest()
+        {
+            Item item = new Item();
+            item.Name = "this is very long folder name, its imposible to add this.";
+            itemService.AddItem(item);
+        }
+
+        [TestMethod]
+        public void AddUserTestOk()
+        {
+            Item item = new Item();
+            item.Name = "correct name";
+            itemService.AddItem(item);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void InvalidUpdateItemTest()
+        {
+            Item item = new Item();
+            item.Name = "Write to candidates";
+            item.Id = 1;
+            itemService.AddItem(item);
+            Item itemToUpdate = new Item();
+            itemToUpdate.Name = "New item";
+            itemToUpdate.Id = 2;
+            itemService.Update(itemToUpdate);
+        }
+
+        [TestMethod]
+        public void UpdateUserTestOk()
+        {
+            Item item = new Item();
+            item.Name = "Write to candidates";
+            item.Id = 1;
+            itemService.AddItem(item);
+            item.Name = "New item";
+            itemService.Update(item);
+
+        }
+
     }
 }

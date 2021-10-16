@@ -14,11 +14,28 @@ namespace BusinessLogic.Services
             this.itemRepository = itemRepository;
         }
 
+        public void AddItem(Item item)
+        {
+            IsValidItemName(item);
+            itemRepository.AddItem(item);
+        }
+
+        public void Update(Item item)
+        {
+            IsValidItemName(item);
+            Item itemFind = itemRepository.GetItem(item.Id);
+            if (itemFind == null)
+            {
+                throw new InvalidOperationException("Error to update item. It doesn't exist in the system.");
+            }
+            itemRepository.UpdateItem(item);
+        }
+
         public void IsValidItemName(Item item)
         {
             if (!item.IsValidItemName())
             {
-                throw new InvalidOperationException("Error to add item. The item name its invalid");
+                throw new InvalidOperationException("Error to add item. The item name is not invalid.");
             }
         }
     }
