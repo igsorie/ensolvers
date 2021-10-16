@@ -32,6 +32,23 @@ namespace BusinessLogic.Services
             folderRepository.UpdateFolder(folder);
         }
 
+        public List<Folder> GetFolders()
+        {
+            return folderRepository.GetFolders();
+        }
+
+        public void Remove(Folder folder)
+        {
+            IsValidFolderName(folder);
+            Folder folderFind = folderRepository.GetFolder(folder.Id);
+            if (folderFind == null)
+            {
+                throw new InvalidOperationException("Error to remove folder. It doesn't exist in the system.");
+            }
+            folderRepository.RemoveFolder(folder.Id);
+        }
+
+
         public void IsValidFolderName(Folder folder)
         {
             if (!folder.IsValidFolderName())
@@ -39,11 +56,5 @@ namespace BusinessLogic.Services
                 throw new InvalidOperationException("Error to add folder. The item name is not invalid.");
             }
         }
-
-        public List<Folder> GetFolders()
-        {
-            return folderRepository.GetFolders();
-        }
-
     }
 }

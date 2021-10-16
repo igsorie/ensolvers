@@ -44,7 +44,7 @@ namespace EnsolversImplementationExercise
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
-        public void InvalidUpdateItemTest()
+        public void InvalidUpdateFolderTest()
         {
             Folder folder = new Folder();
             folder.Name = "Work";
@@ -76,6 +76,20 @@ namespace EnsolversImplementationExercise
             folderService.AddFolder(folder);
             List<Folder> folders = folderService.GetFolders();
             Assert.AreEqual(folders[0], folder);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void InvalidRemoveFolderTest()
+        {
+            Folder folder = new Folder();
+            folder.Name = "Work";
+            folder.Id = 1;
+            folderService.AddFolder(folder);
+            Folder folderToRemove = new Folder();
+            folderToRemove.Name = "Work";
+            folderToRemove.Id = 2;
+            folderService.Remove(folderToRemove);
         }
     }
 }
