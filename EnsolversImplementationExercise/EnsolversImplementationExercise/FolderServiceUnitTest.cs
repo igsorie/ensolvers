@@ -41,5 +41,30 @@ namespace EnsolversImplementationExercise
 
             folderService.IsValidFolderName(folder);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void InvalidUpdateItemTest()
+        {
+            Folder folder = new Folder();
+            folder.Name = "Work";
+            folder.Id = 1;
+            folderService.AddFolder(folder);
+            Folder folderToUpdate = new Folder();
+            folderToUpdate.Name = "New folder";
+            folderToUpdate.Id = 2;
+            folderService.Update(folderToUpdate);
+        }
+
+        [TestMethod]
+        public void UpdateFolderTestOk()
+        {
+            Folder folder = new Folder();
+            folder.Name = "Work";
+            folder.Id = 1;
+            folderService.AddFolder(folder);
+            folder.Name = "New folder";
+            folderService.Update(folder);
+        }
     }
 }

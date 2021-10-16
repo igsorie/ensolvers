@@ -21,6 +21,17 @@ namespace BusinessLogic.Services
             folderRepository.AddFolder(folder);
         }
 
+        public void Update(Folder folder)
+        {
+            IsValidFolderName(folder);
+            Folder folderFind = folderRepository.GetFolder(folder.Id);
+            if (folderFind == null)
+            {
+                throw new InvalidOperationException("Error to update folder. It doesn't exist in the system.");
+            }
+            folderRepository.UpdateFolder(folder);
+        }
+
         public void IsValidFolderName(Folder folder)
         {
             if (!folder.IsValidFolderName())
@@ -28,5 +39,6 @@ namespace BusinessLogic.Services
                 throw new InvalidOperationException("Error to add folder. The item name is not invalid.");
             }
         }
+
     }
 }
