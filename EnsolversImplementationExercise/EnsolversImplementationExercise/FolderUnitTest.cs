@@ -16,6 +16,7 @@ namespace EnsolversImplementationExercise
         {
             Folder folderName = new Folder();
             folderName.Name = "Work";
+            folderName.Id = 1;
             bool isValid = folderName.IsValidItemName();
 
             Assert.IsTrue(isValid);

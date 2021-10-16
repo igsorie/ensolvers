@@ -10,6 +10,7 @@ namespace EnsolversImplementationExercise
         public void IsValidItemNameTest()
         {
             Item item = new Item();
+            item.Id = 1;
             bool isValid = item.IsValidItemName();
 
             Assert.IsFalse(isValid);
