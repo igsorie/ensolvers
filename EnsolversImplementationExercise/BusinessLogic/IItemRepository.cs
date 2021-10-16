@@ -13,5 +13,7 @@ namespace BusinessLogic
         public void UpdateItem(Item item);
 
         public Item GetItem(int id);
+
+        public List<Item> GetItems();
     }
 }

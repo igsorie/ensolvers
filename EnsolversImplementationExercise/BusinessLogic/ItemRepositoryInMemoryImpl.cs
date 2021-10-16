@@ -14,11 +14,25 @@ namespace BusinessLogic
             Items = new List<Item>();
         }
 
-        public void AddItem(Item item) { }
+        public void AddItem(Item item) 
+        {
+            Items.Add(item);
+        }
 
-        public void UpdateItem(Item item) { }
+        public void UpdateItem(Item item) 
+        {
+            Item itemToUpdate = Items.FirstOrDefault(x => x.Name == item.Name);
+            itemToUpdate.Name = item.Name;
+        }
 
-        public Item GetItem(int id) { return new Item(); }
+        public Item GetItem(int id) 
+        {
+            return Items.FirstOrDefault(x => x.Id == id);
+        }
 
+        public List<Item> GetItems()
+        {
+            return Items;
+        }
     }
 }
