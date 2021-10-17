@@ -26,7 +26,6 @@ namespace EnsolversDB
 
             modelBuilder.Entity<Item>().Property(c => c.Name).IsRequired();
             modelBuilder.Entity<Item>().Property(c => c.Status).IsRequired();
-            
         }
     }
 }
