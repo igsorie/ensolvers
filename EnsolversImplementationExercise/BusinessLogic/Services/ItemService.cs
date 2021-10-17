@@ -46,6 +46,11 @@ namespace BusinessLogic.Services
             return itemRepository.GetItems();
         }
 
+        public List<Item> GetItemsFromFolder(int folderId)
+        {
+            return itemRepository.GetItemsFromFolder(folderId);
+        }
+
         public void IsValidItemName(Item item)
         {
             if (!item.IsValidItemName())

@@ -10,27 +10,27 @@ namespace EnsolversWebApi.Controllers
 {
     [ApiController]
     //[TypeFilter(typeof(AuthorizationFilter))]
-    [Route("folders")]
-    public class FolderController : ControllerBase
+    [Route("items")]
+    public class ItemController : ControllerBase
     {
 
-        private IFolderService folderService;
+        private IItemService itemService;
 
         private readonly ILogger<FolderController> _logger;
 
-        public FolderController(ILogger<FolderController> _logger, IFolderService folderService)
+        public ItemController(ILogger<FolderController> _logger, IItemService itemService)
         {
             this._logger = _logger;
-            this.folderService = folderService;
+            this.itemService = itemService;
         }
 
         [HttpPost]
-        public IActionResult AddFolder([FromBody] Folder folder)
+        public IActionResult AddItem([FromBody] Item item)
         {
             try
             {
-                folderService.AddFolder(folder);
-                return Created("/folders", "Folder added correctly.");
+                itemService.AddItem(item);
+                return Created("/items", "Item added correctly.");
             }
             catch (ArgumentException e)
             {
@@ -44,17 +44,17 @@ namespace EnsolversWebApi.Controllers
             }
         }
 
-        [HttpPut("/{folderId}")]
-        public IActionResult UpdateFolder([FromRoute] int folderId, [FromBody] Folder folder)
+        [HttpPut("/items/{itemId}")]
+        public IActionResult UpdateItem([FromRoute] int itemId, [FromBody] Item item)
         {
             try
             {
-                if (folderId != folder.Id)
+                if (itemId != item.Id)
                 {
                     return BadRequest("The identtity is not the same.");
                 }
-                folderService.Update(folder);
-                return Created("/folders", "Folder added correctly.");
+                itemService.Update(item);
+                return Created("/items", "Item updated correctly.");
             }
             catch (ArgumentException e)
             {
@@ -68,13 +68,12 @@ namespace EnsolversWebApi.Controllers
             }
         }
 
-        [HttpDelete("/folders/{folderId}")]
-        public IActionResult DeleteFolder([FromRoute] int folderId)
+        [HttpGet("/items/{folderId}")]
+        public IActionResult GetItemsFromFolders([FromRoute] int folderId)
         {
             try
             {
-                folderService.Remove(folderId);
-                return Created("/folders", "Folder deleted.");
+                return Created("/items", itemService.GetItemsFromFolder(folderId));
             }
             catch (ArgumentException e)
             {
@@ -89,4 +88,3 @@ namespace EnsolversWebApi.Controllers
         }
     }
 }
-

@@ -15,5 +15,7 @@ namespace BusinessLogic.Services
         public Item GetItem(int id);
 
         public List<Item> GetItems();
+
+        public List<Item> GetItemsFromFolder(int folderId);
     }
 }

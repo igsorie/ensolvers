@@ -42,5 +42,10 @@ namespace EnsolversDB.Repositories
             RepositoryContext.SaveChanges();
 
         }
+
+        public List<Item> GetItemsFromFolder(int folderId)
+        {
+            return RepositoryContext.Items.Where(x => x.FolderId == folderId).ToList();
+        }
     }
 }

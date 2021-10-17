@@ -16,11 +16,15 @@ namespace EnsolversDB.Repositories
         public void AddItem(Item item)
         {
             RepositoryContext.Items.Add(item);
+            RepositoryContext.SaveChanges();
         }
 
         public void UpdateItem(Item item)
         {
-            RepositoryContext.Items.Update(item);
+            Item itemToUpdate = GetItem(item.Id);
+            itemToUpdate.Name = item.Name;
+            itemToUpdate.Status = item.Status;
+            RepositoryContext.SaveChanges();
         }
 
         public Item GetItem(int id)
@@ -31,6 +35,11 @@ namespace EnsolversDB.Repositories
         public List<Item> GetItems()
         {
             return RepositoryContext.Items.ToList();
+        }
+
+        public List<Item> GetItemsFromFolder(int folderId) 
+        {
+            return RepositoryContext.Items.Where(x => x.FolderId == folderId).ToList();
         }
     }
  }

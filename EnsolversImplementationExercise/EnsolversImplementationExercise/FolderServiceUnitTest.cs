@@ -19,7 +19,8 @@ namespace EnsolversImplementationExercise
         public void Init()
         {
             IFolderRepository folderRepository = new IFolderRepositoryInMemoryImpl();
-            folderService = new FolderService(folderRepository);
+            IItemRepository itemRepository = new ItemRepositoryInMemoryImpl();
+            folderService = new FolderService(folderRepository, itemRepository);
         }
 
         [TestMethod]

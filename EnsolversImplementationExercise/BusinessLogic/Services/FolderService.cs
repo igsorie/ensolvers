@@ -10,9 +10,11 @@ namespace BusinessLogic.Services
     public class FolderService : IFolderService
     {
         public IFolderRepository folderRepository;
-        public FolderService(IFolderRepository folderRepository)
+        public IItemRepository itemRepository;
+        public FolderService(IFolderRepository folderRepository, IItemRepository itemRepository)
         {
             this.folderRepository = folderRepository;
+            this.itemRepository = itemRepository;
         }
 
         public void AddFolder(Folder folder)
@@ -46,7 +48,6 @@ namespace BusinessLogic.Services
             }
             folderRepository.RemoveFolder(id);
         }
-
 
         public void IsValidFolderName(Folder folder)
         {

@@ -31,7 +31,7 @@ namespace EnsolversWebApi
 
             services.AddScoped<IItemRepository, DataAccessItem>();
 
-            services.AddScoped<IFolderService, FolderService>();
+            services.AddScoped<IItemService, ItemService>();
 
             services.AddScoped<IFolderRepository, DataAccessFolder>();
             services.AddScoped<IFolderService, FolderService>();

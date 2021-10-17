@@ -15,5 +15,6 @@ namespace BusinessLogic.Services
         public List<Folder> GetFolders();
 
         public void Remove(int id);
+
     }
 }
