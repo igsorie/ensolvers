@@ -17,11 +17,13 @@ namespace EnsolversDB.Repositories
         public void AddFolder(Folder folder)
         {
             RepositoryContext.Folders.Add(folder);
+            RepositoryContext.SaveChanges();
         }
 
         public void UpdateFolder(Folder folder)
         {
             RepositoryContext.Folders.Update(folder);
+            RepositoryContext.SaveChanges();
         }
 
         public Folder GetFolder(int id)
@@ -37,6 +39,8 @@ namespace EnsolversDB.Repositories
         public void RemoveFolder(int id)
         {
             RepositoryContext.Folders.Remove(GetFolder(id));
+            RepositoryContext.SaveChanges();
+
         }
     }
 }

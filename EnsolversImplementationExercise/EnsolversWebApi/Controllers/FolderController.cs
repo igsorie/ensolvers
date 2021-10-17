@@ -9,7 +9,7 @@ using BusinessLogic;
 namespace SoftwareIncidentManagerWebApi.Controllers
 {
     [ApiController]
-    [TypeFilter(typeof(AuthorizationFilter))]
+    //[TypeFilter(typeof(AuthorizationFilter))]
     [Route("folders")]
     public class FolderController : ControllerBase
     {
@@ -30,7 +30,7 @@ namespace SoftwareIncidentManagerWebApi.Controllers
             try
             {
                 folderService.AddFolder(folder);
-                return Created("/folder", "Folder added correctly.");
+                return Created("/folders", "Folder added correctly.");
             }
             catch (ArgumentException e)
             {
@@ -68,13 +68,13 @@ namespace SoftwareIncidentManagerWebApi.Controllers
             }
         }
 
-        [HttpDelete("/{folderId}")]
-        public IActionResult DeleteProject([FromRoute] int folderId)
+        [HttpDelete("/folders/{folderId}")]
+        public IActionResult DeleteFolder([FromRoute] int folderId)
         {
             try
             {
                 folderService.Remove(folderId);
-                return Created("/projects", "Proyecto eliminado correctamente.");
+                return Created("/folders", "Folder deleted.");
             }
             catch (ArgumentException e)
             {
