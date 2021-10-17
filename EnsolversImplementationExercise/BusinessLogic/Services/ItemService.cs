@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Services
 {
-    public class ItemService
+    public class ItemService : IItemService
     {
         public IItemRepository itemRepository;
         public ItemService(IItemRepository itemRepository) 
@@ -44,6 +44,11 @@ namespace BusinessLogic.Services
         public List<Item> GetItems()
         {
             return itemRepository.GetItems();
+        }
+
+        public List<Item> GetItemsFromFolder(int folderId)
+        {
+            return itemRepository.GetItemsFromFolder(folderId);
         }
 
         public void IsValidItemName(Item item)

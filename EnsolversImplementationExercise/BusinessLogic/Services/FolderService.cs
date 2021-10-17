@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Services
 {
-    public class FolderService
+    public class FolderService : IFolderService
     {
         public IFolderRepository folderRepository;
-        public FolderService(IFolderRepository folderRepository)
+        public IItemRepository itemRepository;
+        public FolderService(IFolderRepository folderRepository, IItemRepository itemRepository)
         {
             this.folderRepository = folderRepository;
+            this.itemRepository = itemRepository;
         }
 
         public void AddFolder(Folder folder)
@@ -37,17 +39,15 @@ namespace BusinessLogic.Services
             return folderRepository.GetFolders();
         }
 
-        public void Remove(Folder folder)
+        public void Remove(int id)
         {
-            IsValidFolderName(folder);
-            Folder folderFind = folderRepository.GetFolder(folder.Id);
+            Folder folderFind = folderRepository.GetFolder(id);
             if (folderFind == null)
             {
                 throw new InvalidOperationException("Error to remove folder. It doesn't exist in the system.");
             }
-            folderRepository.RemoveFolder(folder.Id);
+            folderRepository.RemoveFolder(id);
         }
-
 
         public void IsValidFolderName(Folder folder)
         {

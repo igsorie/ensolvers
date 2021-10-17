@@ -34,5 +34,10 @@ namespace BusinessLogic
         {
             return Items;
         }
+
+        public List<Item> GetItemsFromFolder(int folderId)
+        {
+            return null;
+        }
     }
 }
