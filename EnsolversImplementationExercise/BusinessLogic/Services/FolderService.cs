@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Services
 {
-    public class FolderService
+    public class FolderService : IFolderService
     {
         public IFolderRepository folderRepository;
         public FolderService(IFolderRepository folderRepository)

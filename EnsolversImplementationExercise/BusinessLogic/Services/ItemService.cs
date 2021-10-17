@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Services
 {
-    public class ItemService
+    public class ItemService : IItemService
     {
         public IItemRepository itemRepository;
         public ItemService(IItemRepository itemRepository) 
