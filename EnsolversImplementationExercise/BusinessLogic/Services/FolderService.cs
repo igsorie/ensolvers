@@ -37,15 +37,14 @@ namespace BusinessLogic.Services
             return folderRepository.GetFolders();
         }
 
-        public void Remove(Folder folder)
+        public void Remove(int id)
         {
-            IsValidFolderName(folder);
-            Folder folderFind = folderRepository.GetFolder(folder.Id);
+            Folder folderFind = folderRepository.GetFolder(id);
             if (folderFind == null)
             {
                 throw new InvalidOperationException("Error to remove folder. It doesn't exist in the system.");
             }
-            folderRepository.RemoveFolder(folder.Id);
+            folderRepository.RemoveFolder(id);
         }
 
 

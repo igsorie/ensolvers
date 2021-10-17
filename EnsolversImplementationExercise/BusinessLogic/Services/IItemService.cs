@@ -15,7 +15,5 @@ namespace BusinessLogic.Services
         public Item GetItem(int id);
 
         public List<Item> GetItems();
-
-        public void IsValidItemName(Item item);
     }
 }

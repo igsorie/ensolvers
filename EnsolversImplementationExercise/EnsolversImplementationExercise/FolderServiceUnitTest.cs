@@ -89,7 +89,7 @@ namespace EnsolversImplementationExercise
             Folder folderToRemove = new Folder();
             folderToRemove.Name = "Work";
             folderToRemove.Id = 2;
-            folderService.Remove(folderToRemove);
+            folderService.Remove(folderToRemove.Id);
         }
     }
 }
