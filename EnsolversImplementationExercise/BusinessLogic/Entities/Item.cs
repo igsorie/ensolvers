@@ -21,7 +21,7 @@ namespace BusinessLogic
 
         public bool IsValidItemName()
         {
-            return this.Name != null && this.Name.Length <= NAME_MAX_LENGTH;
+            return this.Name != null && !this.Name.Equals("") && this.Name.Length <= NAME_MAX_LENGTH;
         }
 
         public override bool Equals(object obj)

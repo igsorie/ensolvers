@@ -17,7 +17,7 @@ namespace EnsolversImplementationExercise
             Folder folderName = new Folder();
             folderName.Name = "Work";
             folderName.Id = 1;
-            bool isValid = folderName.IsValidItemName();
+            bool isValid = folderName.IsValidFolderName();
 
             Assert.IsTrue(isValid);
         }
@@ -27,9 +27,9 @@ namespace EnsolversImplementationExercise
         {
             Folder folderName = new Folder();
             folderName.Name = "";
-            bool isValid = folderName.IsValidItemName();
+            bool isValid = folderName.IsValidFolderName();
 
-            Assert.IsTrue(isValid);
+            Assert.IsFalse(isValid);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace EnsolversImplementationExercise
         {
             Folder folderName = new Folder();
             folderName.Name = "this correct long name 25";
-            bool isValid = folderName.IsValidItemName();
+            bool isValid = folderName.IsValidFolderName();
 
             Assert.IsTrue(isValid);
         }

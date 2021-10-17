@@ -21,9 +21,9 @@ namespace BusinessLogic
             Items = new List<Item>();
         }
 
-        public bool IsValidItemName()
+        public bool IsValidFolderName()
         {
-            return this.Name != null && this.Name.Length <= NAME_MAX_LENGTH;
+            return this.Name != null && !this.Name.Equals("") && this.Name.Length <= NAME_MAX_LENGTH;
         }
     }
 }

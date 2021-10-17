@@ -23,7 +23,7 @@ namespace EnsolversImplementationExercise
             item.Name = "";
 
             bool isValid = item.IsValidItemName();
-            Assert.IsTrue(isValid);
+            Assert.IsFalse(isValid);
         }
 
         [TestMethod]
