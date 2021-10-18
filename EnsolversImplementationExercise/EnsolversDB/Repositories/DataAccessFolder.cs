@@ -38,7 +38,9 @@ namespace EnsolversDB.Repositories
 
         public void RemoveFolder(int id)
         {
-            RepositoryContext.Folders.Remove(GetFolder(id));
+            Folder folder = GetFolder(id);
+            RepositoryContext.Folders.Remove(folder);
+            
             RepositoryContext.SaveChanges();
 
         }
