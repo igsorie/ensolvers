@@ -23,7 +23,7 @@ namespace SoftwareIncidentManagerWebApi.Filters
                 context.Result = new ContentResult()
                 {
                     StatusCode = 401,
-                    Content = "Error al autentificar al usuario. No está logueado."
+                    Content = "Error to autenticate user. He is not register in the system."
                 };
                 return;
             }
@@ -32,7 +32,7 @@ namespace SoftwareIncidentManagerWebApi.Filters
                 context.Result = new ContentResult()
                 {
                     StatusCode = 403,
-                    Content = "Error al autentificar al usuario. Token inválido."
+                    Content = "Error to autenticate user. Invalid token."
                 };
                 return;
             }

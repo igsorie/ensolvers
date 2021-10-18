@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using BusinessLogic.Services;
 using SoftwareIncidentManagerWebApi.Filters;
 using BusinessLogic;
+using System.Web;
 
 namespace EnsolversWebApi.Controllers
 {
@@ -75,6 +76,25 @@ namespace EnsolversWebApi.Controllers
             {
                 folderService.Remove(folderId);
                 return Created("/folders", "Folder deleted.");
+            }
+            catch (ArgumentException e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet("/folders")]
+        public IActionResult GetFolders()
+        {
+            try
+            {
+                return Created("/folders", folderService.GetFolders());
             }
             catch (ArgumentException e)
             {
